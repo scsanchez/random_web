@@ -6,14 +6,20 @@ import { resetValues } from "./utils/functions/resetValues.tsx";
 function App() {
   const [min, setMin] = useState(1);
   const [max, setMax] = useState(100);
-  const [randomNumber, setRandomNumber] = useState(null);
-  const [history, setHistory] = useState([]);
+  const [randomNumber, setRandomNumber] = useState(0);
+  const [history, setHistory] = useState<number[]>([]);
 
   return (
     <div className="container">
       <div className="columns is-centered is-mobile">
         <div className="column is-narrow">
-          <form className="box" onSubmit={generateRandomNumber}>
+          <form
+            className="box"
+            onSubmit={(event) => {
+              event.preventDefault();
+              generateRandomNumber(min, max, setRandomNumber, setHistory);
+            }}
+          >
             <div className="field is-horizontal">
               <div className="field-label is-normal">
                 <label className="label">Min</label>

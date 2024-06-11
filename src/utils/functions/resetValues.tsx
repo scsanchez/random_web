@@ -1,8 +1,13 @@
-export const resetValues = (setMin, setMax, setRandomNumber, setHistory) => {
-    setMin(1);
-    setMax(100);
-    setRandomNumber(null);
-    setHistory([]);
-  };
+export const resetValues = (
+  setMin: React.Dispatch<React.SetStateAction<number>>,
+  setMax: React.Dispatch<React.SetStateAction<number>>,
+  setRandomNumber: React.Dispatch<React.SetStateAction<number>>,
+  setHistory: React.Dispatch<React.SetStateAction<number[]>>
+) => {
+  setMin(0);
+  setMax(0);
+  setRandomNumber(0);
+  setHistory([]);
+};
 
 export default resetValues;
