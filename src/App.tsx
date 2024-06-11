@@ -97,7 +97,7 @@ function App() {
           <div className="column is-narrow">
             <div className="box">
               <h2 className="title">History</h2>
-              <ul>
+              <ul className="has-text-centered">
                 {history.map((number, index) => (
                   <li key={index}>{number}</li>
                 ))}
