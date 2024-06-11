@@ -8,6 +8,7 @@ function App() {
   const [max, setMax] = useState(100);
   const [randomNumber, setRandomNumber] = useState(0);
   const [history, setHistory] = useState<number[]>([]);
+  const [isNumberGenerated, setIsNumberGenerated] = useState(false);
 
   return (
     <div className="container">
@@ -65,6 +66,7 @@ function App() {
                 onClick={(event) => {
                   event.preventDefault();
                   generateRandomNumber(min, max, setRandomNumber, setHistory);
+                  setIsNumberGenerated(true);
                 }}
               >
                 Generate
@@ -72,15 +74,17 @@ function App() {
               <button
                 className="button is-light"
                 type="button"
-                onClick={() =>
-                  resetValues(setMin, setMax, setRandomNumber, setHistory)
-                }
+                onClick={() => {
+                  setIsNumberGenerated(false);
+                  resetValues(setMin, setMax, setRandomNumber, setHistory);
+                  
+                }}
               >
                 Reset
               </button>
             </div>
 
-            {randomNumber !== null && (
+            {isNumberGenerated && (
               <div className="notification is-primary mt-4">
                 Random Number: {randomNumber}
               </div>
@@ -88,7 +92,7 @@ function App() {
           </form>
         </div>
       </div>
-      {randomNumber !== null && (
+      {isNumberGenerated && (
         <div className="columns is-centered is-mobile">
           <div className="column is-narrow">
             <div className="box">
